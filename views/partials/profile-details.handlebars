@@ -1,0 +1,55 @@
+<p style="color:aliceblue"></p>
+<div class="profile" data-post-id="{{id}}">
+  <ul class="list-group">
+   
+  {{#each (processTitle title) as |wordObj|}}
+        <a href="/api/posts/search?tag={{wordObj.word}}">{{wordObj.word}}</a>
+    {{/each}}
+  <li class="list-group-item">{{content}}</li>
+  {{#if imageSource}}
+  <li class="list-group-item"><img src="{{imageSource}}" width="500" height="500"/></li>
+    
+  {{/if}}
+  <br>
+</ul>
+<button class="like-btn likeBtn" id="likeBtn">Like</button>
+<button class="delete-btn deleteBtn" id="deleteBtn">Delete</button>
+</div>
+
+<style>
+  .like-btn {
+    background-color: #57BEE6;
+    color: #222121;
+    height: 36px;
+    width: 50px;
+    border-radius: 2px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+  }
+  .delete-btn {
+    background-color: #57BEE6;
+    color: #222121;
+    height: 36px;
+    width: 60px;
+    border-radius: 2px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+  }
+  .like-btn:hover {
+      background-color: #e657c2;
+    }
+  .delete-btn:hover {
+      background-color: #e657c2;
+    }
+  .profile {
+    background-color: orange;
+    width: 60%;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  .list-group-item {
+    border-radius: 8px;
+  }
+</style>
