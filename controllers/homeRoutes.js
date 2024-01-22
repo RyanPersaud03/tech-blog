@@ -174,6 +174,10 @@ router.all("/login", (req, res) => {
   // Render the 'login' page
   res.render("login");
 });
+//==========================================================
+router.get("/signup", async (req, res) => {
+  res.render("signup");
+})
 
 // Export
 module.exports = router;

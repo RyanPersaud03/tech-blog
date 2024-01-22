@@ -45,6 +45,18 @@ loginlink:hover {
   background: white;
   color: #007bff;
 }
+.signuplink{
+  border: 1px solid #007bff;
+  background: #007bff;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+  border-radius: 16px;
+}
+signuplink:hover {
+  background: white;
+  color: #007bff;
+}
 
 h1 {
   font-family: "Georgia", sans-serif;
@@ -71,7 +83,7 @@ main {
 }
 
 .user-name {
-  background-color: #84a59d;
+  background-color: #a3a8a7;
 }
 
 .blogPost-main {
@@ -128,11 +140,11 @@ main {
 /* Card styles */
 
 .card-header {
-  background-color: #e5eaf5;
+  background-color: #ebeff5;
 }
 
 .card-body {
-  background-color: #ffe5ec;
+  background-color: #eaf1eb;
 }
 
 .card {
