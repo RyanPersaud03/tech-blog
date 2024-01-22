@@ -1,20 +1,44 @@
-<section class="d-flex justify-content-center align-items-center vh-100">
-
-<form>
-    <div class="mb-3">
-        
-        <h3 class="custom-text-color">Login</h3>
-        <label for="exampleInputEmail1" class="form-label custom-text-color">Username</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" name="username" aria-describedby="emailHelp">            
+{{! Login/Signup page }}
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Login</h2>
+      <form class="form login-form">
+        <div class="form-group mb-2">
+          <label class="form-label" for="email-login">Email:</label>
+          <input class="form-control" type="text" id="email-login" />
+        </div>
+        <div class="form-group mb-2">
+          <label for="password-login">Password:</label>
+          <input class="form-control" type="password" id="password-login" />
+        </div>
+        <div class="form-group">
+          <button class="btn btn-dark" type="submit">Login</button>
+        </div>
+      </form>
     </div>
-    <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label custom-text-color">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
-            <div id="emailHelp" class="form-text">Password must be 8 characters long.</div>
+
+    <div class="col-md-6">
+      <h2>Signup</h2>
+      <form class="form signup-form">
+        <div class="form-group mb-2">
+          <label for="name-signup">Name:</label>
+          <input class="form-control" type="text" id="name-signup" />
+        </div>
+        <div class="form-group mb-2">
+          <label for="email-signup">Email:</label>
+          <input class="form-control" type="text" id="email-signup" />
+        </div>
+        <div class="form-group mb-2">
+          <label for="password-signup">Password:</label>
+          <input class="form-control" type="password" id="password-signup" />
+        </div>
+        <div class="form-group">
+          <button class="btn btn-dark" type="submit">Signup</button>
+        </div>
+      </form>
     </div>
+  </div>
+</div>
 
-    <button type="submit" class="btn custom-btn-color" id="loginForm">Submit</button>
-</form>
-
-</section>
-<script src="/js/login.js"></script>
+<script src="./js/login.js"></script>

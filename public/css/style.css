@@ -1,0 +1,153 @@
+/* General page styles */
+
+header {
+  font-family: "Georgia", serif;
+}
+
+body {
+  background-color: #f7e8e2;
+}
+/* Home link style */
+.homelink{
+  border: 1px solid #007bff;
+  background: #007bff;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+  border-radius: 16px;
+}
+homelink:hover {
+  background: white;
+  color: #007bff;
+}
+/* Dashboard link style */
+.dashlink{
+  border: 1px solid #007bff;
+  background: #007bff;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+  border-radius: 16px;
+}
+dashlink:hover {
+  background: white;
+  color: #007bff;
+}
+.loginlink{
+  border: 1px solid #007bff;
+  background: #007bff;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+  border-radius: 16px;
+}
+loginlink:hover {
+  background: white;
+  color: #007bff;
+}
+
+h1 {
+  font-family: "Georgia", sans-serif;
+  background-color: #7cd4cd;
+  color: #ffffff;
+  padding: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#blogName {
+  color: #ffe5ec;
+}
+
+main {
+  font-family: "Georgia", serif;
+  margin-top: -5px;
+  background-color: #f7e8e2;
+}
+
+.homepage-main {
+  margin-top: 34px;
+}
+
+.user-name {
+  background-color: #84a59d;
+}
+
+.blogPost-main {
+  margin-top: 34px;
+}
+
+/* Nav styles */
+
+.navBar {
+  background-color: #00a0a0;
+}
+
+#logout {
+  background-color: #c4516a;
+}
+#logout:hover {
+  /* Box shadow on hover */
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Input/textarea styles */
+
+#titleInput,
+#bodyInput,
+#comment,
+#email-login,
+#password-login,
+#name-signup,
+#email-signup,
+#password-signup {
+  background-color: #e5eaf5;
+}
+
+/* Button styles */
+
+.btn {
+  background-color: #63cc5a;
+}
+#deleteBtn {
+  background-color: #e24444;
+}
+#deleteBtn:hover {
+  background: white;
+  color: red;
+}
+#editBtn {
+  background-color: #44a3e2;
+}
+#editBtn:hover {
+  background: white;
+  color: #007bff;
+}
+
+/* Card styles */
+
+.card-header {
+  background-color: #e5eaf5;
+}
+
+.card-body {
+  background-color: #ffe5ec;
+}
+
+.card {
+  background-color: #e5faff;
+}
+
+.card:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+}
+
+.bloglink{
+  text-decoration: none;
+}
+/* .loginbg{
+  background-color: #c3c8f3;
+} */

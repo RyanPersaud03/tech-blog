@@ -1,86 +1,42 @@
-const Likes = require('./likes');
-const User = require('./User');
-const Posts = require('./posts');
-const follow= require("./follow");
-const comment = require("./comments");
-const Message = require("./message");
-const Story = require("./story");
+// Imports
+const User = require("./user");
+const BlogPost = require("./blogPost");
+const Comment = require("./comment");
 
-Story.belongsTo(User, {
-    foreignKey: 'teller_id',
-});
-User.hasOne(Story, {
-    foreignKey: "teller_id",
-})
-
-comment.belongsTo(Posts, {
-    foreignKey:`post_id`,
-})
-
-Posts.hasMany(comment,{
-    foreignKey:`post_id`,
-})
-
-User.hasMany(comment,{
-    foreignKey:`user_id`,
-})
-comment.belongsTo(User,{
-    foreignKey:`user_id`,
-})
-
-Likes.belongsTo(Posts, {
-    foreignKey:'post_id',
-});
-Likes.belongsTo(User,{
-    foreignKey:'user_id',
+// Sets up relationships between tables and allows joining them using Sequelize
+// User has many BlogPosts, establishing a one-to-many relationship
+User.hasMany(BlogPost, {
+  foreignKey: "user_id",    // The foreign key in the BlogPost table referencing the User table
+  onDelete: "CASCADE",      // When a User is deleted, also delete their associated BlogPosts
 });
 
-Posts.hasMany(Likes, {
-    foreignKey:'post_id',
-});
-User.hasMany(Likes, {
-    foreignKey:'user_id',
+// BlogPost belongs to a User, establishing the reverse relationship
+BlogPost.belongsTo(User, {
+  foreignKey: "user_id",      // The foreign key in the BlogPost table referencing the User table
 });
 
-Posts.belongsTo(User, {
-    foreignKey:'user_id',
-});
-User.hasMany(Posts,{
-    foreignKey:'user_id',
-});
-Message.belongsTo(User, {
-    foreignKey: "sender_id",
-    as: "sender"
-});
-Message.belongsTo(User, {
-    foreignKey: "reciver_id",
-    as: 'reciver'
-})
-follow.belongsTo(User, {
-    foreignKey: "following_user_id",
-    as: "followers"
-});
-follow.belongsTo(User, {
-    foreignKey: "followed_user_id",
-    as: "following"
+// User has many Comments, establishing another one-to-many relationship
+User.hasMany(Comment, {
+  foreignKey: "user_id",    // The foreign key in the Comment table referencing the User table
+  onDelete: "CASCADE",      // When a User is deleted, also delete their associated Comments
 });
 
-User.belongsToMany(User, {
-    through: "follow",
-    as: "followers",
-    foreignKey: "followed_user_id"
+// Comment belongs to a User, establishing the reverse relationship
+Comment.belongsTo(User, {
+  foreignKey: "user_id",      // The foreign key in the Comment table referencing the User table
 });
-User.belongsToMany(User,  {
-    through: 'follow',
-    as: "following",
-    foreignKey: "following_user_id"
-})
 
-module.exports = {
-    Likes,
-    User,
-    Posts,
-    follow,
-    Message,
-    Story
-};
+// Comment belongs to a BlogPost, establishing a relationship between Comment and BlogPost
+Comment.belongsTo(BlogPost, {
+  foreignKey: "blogPost_id",    // The foreign key in the Comment table referencing the BlogPost table
+  onDelete: "CASCADE",          // When a BlogPost is deleted, also delete its associated Comments
+});
+
+// BlogPost has many Comments, establishing the reverse relationship
+BlogPost.hasMany(Comment, {
+  foreignKey: "blogPost_id",    // The foreign key in the Comment table referencing the BlogPost table
+  onDelete: "CASCADE",          // When a BlogPost is deleted, also delete its associated Comments
+});
+
+// Export the models for use in other parts of the application
+module.exports = { User, BlogPost, Comment };

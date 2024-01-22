@@ -1,66 +1,50 @@
-const allRoutes = require('./controllers');
-const session = require("express-session");
+// Imports
+const path = require("path");
 const express = require("express");
-// const publicPath = require("./public");
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const sequelize = require('./config/connection');
+const session = require("express-session");
+const exphbs = require("express-handlebars");
+const routes = require("./controllers");
+const helpers = require("./utils/helpers");
+
+const sequelize = require("./config/connection");
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
+
 const app = express();
-const exphbs = require('express-handlebars');
-// these two line are for socket.io you can coment them if you want 
-const http = require('http').createServer(app);
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
+// Set up Handlebars.js engine with custom helpers
+const hbs = exphbs.create({ helpers });
 
-
-app.use(express.static('public'));
-
-// this like is also for socket.io setups 
-
-
-const { User,Likes, Posts} = require('./models');
-
-// you can change secret or move it to env file if you want 
+// Sets session cookie properties
 const sess = {
-    secret: 'Super secret secret',
-    cookie: {
-        maxAge:1000*60*60*2
-    },
-    resave: false,
-    saveUninitialized: true,
-    store: new SequelizeStore({
-        db: sequelize
-    })
+  secret: "Super secret secret",
+  cookie: {
+    maxAge: 1200000,
+    httpOnly: true,
+    secure: false,
+    sameSite: "strict",
+  },
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize,
+  }),
 };
+
 app.use(session(sess));
-app.use(express.urlencoded({ extended: true }));
+
+// Inform Express.js on which template engine to use
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars");
+
+// Middleware
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "public")));
 
-const hbs = exphbs.create({
-    helpers: {
-      processTitle: function (title) {
-        console.log('Title:', title);
-        if (typeof title === 'string' && title.trim() !== '') {
-          const words = title.split(" ");
-          return words.map(word => {
-            return {
-              word: word,
-              isHashTag: word.startsWith('#')
-            };
-          });
-          } else {
-            return [];
-          }
-        }
-      }
-    });
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
+app.use(routes);
 
-app.use('/',allRoutes);
-
-// if you are about to comment socket.io part please change http to app here 
-sequelize.sync({ force: false }).then(function() {
-    http.listen(PORT, function() {
-        console.log('App listening on PORT ' + PORT);
-    });
+// Syncs sequelize with database
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log("Now listening"));
 });
