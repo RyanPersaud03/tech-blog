@@ -1,12 +1,9 @@
 // Function created that allows users to delete blog posts on dashboard page and then redirect them to an updated dashboard
 const deletePostHandler = async (event) => {
     event.preventDefault();
-    console.log("clicked me");
-    console.log(event.target);
   
     // Get the data-id attribute from the clicked button, which represents the blog post ID
     let blogPostId = event.target.getAttribute("data-id");
-    console.log(blogPostId);
   
     // Send a DELETE request to the server endpoint for deleting a blog post
     const response = await fetch(`/api/blogPost/${blogPostId}`, {
@@ -26,7 +23,6 @@ const deletePostHandler = async (event) => {
   // Function created that allows for a user to edit blog posts on dashboard page by redirecting them to the /create/:id page
   const editBlogPost = async (event) => {
     event.preventDefault();
-    console.log("clicked me");
   
      // Get the data-id attribute from the clicked button, which represents the blog post ID
     let blogPostId = event.target.getAttribute("data-id");

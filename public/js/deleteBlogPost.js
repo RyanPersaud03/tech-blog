@@ -1,12 +1,9 @@
 // Function created that handles the deletion of a blog post from the individual blog post page
 const deletePostHandler = async (event) => {
     event.preventDefault();
-    console.log("clicked me");
-    console.log(event.target);
   
     // Extract the blog post ID from the current URL
     let blogPost = window.location.pathname.split("/");
-    console.log(blogPost);
   
     // Send a DELETE request to the server endpoint for deleting the current blog post
     const response = await fetch(`/api/blogPost/${blogPost[2]}`, {

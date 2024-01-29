@@ -2,8 +2,6 @@
 async function newCommentHandler(event) {
     event.preventDefault();
   
-    console.log("clicked me");
-  
      // Get the text from the comment input and trim any leading or trailing whitespace
     const comment_body = document.getElementById("comment").value.trim();
     
@@ -36,8 +34,6 @@ async function newCommentHandler(event) {
   }
   
   // Event Listener: Attach the newCommentHandler function to the form submission event
-  console.log("HERE!");
-  console.log(document.getElementById("comment-form"));
   document
     .getElementById("comment-form")
     .addEventListener("submit", newCommentHandler);

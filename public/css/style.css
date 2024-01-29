@@ -1,7 +1,8 @@
 /* General page styles */
 
 header {
-  font-family: "Georgia", serif;
+  font-family: 'Roboto Slab', serif;
+  border-bottom: 4px solid #8ca9e7; /* Change color as needed */
 }
 
 body {
@@ -15,6 +16,7 @@ body {
   color: white;
   text-decoration: none;
   border-radius: 16px;
+  margin-right: 5px;
 }
 homelink:hover {
   background: white;
@@ -28,6 +30,7 @@ homelink:hover {
   color: white;
   text-decoration: none;
   border-radius: 16px;
+  margin-right: 5px;
 }
 dashlink:hover {
   background: white;
@@ -40,6 +43,7 @@ dashlink:hover {
   color: white;
   text-decoration: none;
   border-radius: 16px;
+  margin-right: 5px;
 }
 loginlink:hover {
   background: white;
@@ -60,12 +64,14 @@ signuplink:hover {
 
 h1 {
   font-family: "Georgia", sans-serif;
-  background-color: #7cd4cd;
+  background-color: #c2a7f5;
   color: #ffffff;
   padding: 20px;
   margin-bottom: 10px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Libre Baskerville', serif;
+  border: 6px solid #300461; /* Change color as needed */
 }
 
 #blogName {
@@ -93,7 +99,10 @@ main {
 /* Nav styles */
 
 .navBar {
-  background-color: #00a0a0;
+  background-color: #4b00a0;
+  padding: 20px;
+  padding-bottom: 25px;
+  display: flex;
 }
 
 #logout {
