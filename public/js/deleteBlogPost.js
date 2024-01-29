@@ -1,5 +1,5 @@
 // Function created that handles the deletion of a blog post from the individual blog post page
-const deletePostHandler = async (event) => {
+const deletePostController = async (event) => {
     event.preventDefault();
   
     // Extract the blog post ID from the current URL
@@ -23,5 +23,5 @@ const deletePostHandler = async (event) => {
   // Get all elements with the id "deleteBtn" and add an event listener for delete functionality
   const deleteButton = document.querySelectorAll("#deleteBtn");
   for (let i = 0; i < deleteButton.length; i++) {
-    deleteButton[i].addEventListener("click", deletePostHandler);
+    deleteButton[i].addEventListener("click", deletePostController);
   }

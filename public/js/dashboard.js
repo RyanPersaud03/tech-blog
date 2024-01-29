@@ -1,5 +1,5 @@
 // Function created that allows users to delete blog posts on dashboard page and then redirect them to an updated dashboard
-const deletePostHandler = async (event) => {
+const deletePostController = async (event) => {
     event.preventDefault();
   
     // Get the data-id attribute from the clicked button, which represents the blog post ID
@@ -40,5 +40,5 @@ const deletePostHandler = async (event) => {
   // Get all elements with the id "deleteBtn" and add an event listener for delete functionality
   const deleteButton = document.querySelectorAll("#deleteBtn");
   for (let i = 0; i < deleteButton.length; i++) {
-    deleteButton[i].addEventListener("click", deletePostHandler);
+    deleteButton[i].addEventListener("click", deletePostController);
   }
